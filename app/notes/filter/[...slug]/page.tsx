@@ -7,7 +7,7 @@ interface Props {
 }
 
 const NotesPage = async ({ params }: Props) => {
-    
+
   const queryClient = new QueryClient();
 
   const { slug } = await params;
@@ -19,7 +19,7 @@ const NotesPage = async ({ params }: Props) => {
   });
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <NoteSlugClient />
+      <NoteSlugClient category={slug}/>
     </HydrationBoundary>
   );
 };

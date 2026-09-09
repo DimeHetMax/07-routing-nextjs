@@ -14,19 +14,20 @@ import Modal from '@/components/Modal/Modal';
 import NoteForm from '@/components/NoteForm/NoteForm';
 
 import { fetchNotes } from '@/lib/api';
-import { useParams } from 'next/navigation';
 
-const NoteSlugClient = () => {
-  const param = useParams<{ slug: string[] }>();
+interface NoteSlugClientProps{
+    category: string[]
+}
+const NoteSlugClient = ({category}:NoteSlugClientProps) => {
 
   const [page, setPage] = useState<number>(1);
   const [search, setSearch] = useState<string>('');
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [searchInputDebounced] = useDebounce(search, 500);
-  const category = param.slug[0] === 'all' ? undefined : param.slug[0];
+  const slug = category[0] === 'all' ? undefined : category[0];
   const { data, isPending, isError, isSuccess } = useQuery({
-    queryKey: ['notes', page, searchInputDebounced, category],
-    queryFn: () => fetchNotes(page, searchInputDebounced, category),
+    queryKey: ['notes', page, searchInputDebounced, slug],
+    queryFn: () => fetchNotes(page, searchInputDebounced, slug),
     placeholderData: keepPreviousData,
   });
   console.log(data);
