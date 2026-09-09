@@ -4,7 +4,7 @@ import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import { useDebounce } from 'use-debounce';
 
 //styles
-import css from '../../NotesPage.module.css';
+import css from './NotesPage.module.css';
 
 // components
 import NoteList from '@/components/NoteList/NoteList';

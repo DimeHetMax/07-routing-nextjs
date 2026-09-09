@@ -7,7 +7,7 @@ import { useParams } from 'next/navigation';
 // type Props = {
 //   id: string;
 // };
-const NoteDetailsClient = () => {
+const NotePreviewClient = () => {
   const { id } = useParams<{ id: string }>();
   const { data, isError, isLoading } = useQuery({
     queryKey: ['note', id],
@@ -35,4 +35,4 @@ const NoteDetailsClient = () => {
     </>
   );
 };
-export default NoteDetailsClient;
+export default NotePreviewClient;

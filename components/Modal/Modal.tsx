@@ -1,7 +1,10 @@
-"use client"
-import { createPortal } from "react-dom";
-import { useEffect } from "react";
-import css from "./Modal.module.css";
+'use client';
+import { createPortal } from 'react-dom';
+import { useEffect } from 'react';
+import css from './Modal.module.css';
+
+
+
 interface ModalProp {
   children: React.ReactNode;
   onBackDropClose: () => void;
