@@ -16,7 +16,7 @@ import NoteForm from '@/components/NoteForm/NoteForm';
 import { fetchNotes } from '@/lib/api';
 
 interface NoteSlugClientProps{
-    category: string[]
+    category?: string
 }
 const NoteSlugClient = ({category}:NoteSlugClientProps) => {
 
@@ -24,10 +24,9 @@ const NoteSlugClient = ({category}:NoteSlugClientProps) => {
   const [search, setSearch] = useState<string>('');
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [searchInputDebounced] = useDebounce(search, 500);
-  const slug = category[0] === 'all' ? undefined : category[0];
   const { data, isPending, isError, isSuccess } = useQuery({
-    queryKey: ['notes', page, searchInputDebounced, slug],
-    queryFn: () => fetchNotes(page, searchInputDebounced, slug),
+    queryKey: ['notes', page, searchInputDebounced, category],
+    queryFn: () => fetchNotes(page, searchInputDebounced, category),
     placeholderData: keepPreviousData,
   });
   console.log(data);
