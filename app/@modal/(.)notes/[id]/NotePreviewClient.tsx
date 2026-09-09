@@ -5,7 +5,7 @@ import { getNoteById } from '@/lib/api';
 import { useParams } from 'next/navigation';
 import ModalPreview from '@/components/ModalPreview/ModalPreview';
 
-const NoteDetailsClient = () => {
+const NotePreviewClient = () => {
   const { id } = useParams<{ id: string }>();
   const { data, isError, isLoading } = useQuery({
     queryKey: ['note', id],
@@ -36,4 +36,4 @@ const NoteDetailsClient = () => {
     </>
   );
 };
-export default NoteDetailsClient;
+export default NotePreviewClient;
